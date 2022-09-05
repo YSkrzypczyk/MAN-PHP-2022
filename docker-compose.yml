@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: site
+    ports :
+     - "80:80"
+    volumes:
+     - ./www:/var/www/html/
+     - ./server/000-default.conf:/etc/apache2/sites-available/000-default.conf
+     - ./server/apache2.conf:/etc/apache2/apache2.conf
+     - ./server/php.ini:/usr/local/etc/php/php.ini
