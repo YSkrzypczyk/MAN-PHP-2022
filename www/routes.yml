@@ -2,6 +2,22 @@
   controller: Main
   action: home
 
+/se-connecter:
+  controller: Security
+  action: login
+
 /login:
   controller: Security
   action: login
+
+/logout:
+  controller: Security
+  action: logout
+
+/register:
+  controller: Security
+  action: register
+
+/pwd-forget:
+  controller: Security
+  action: forget
