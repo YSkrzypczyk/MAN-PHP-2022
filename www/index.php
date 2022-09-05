@@ -1,4 +1,5 @@
 <?php
+    namespace App;
 
     //Récupérer l'url, exemple /login
     $uri = strtolower(trim($_SERVER["REQUEST_URI"]));
@@ -29,6 +30,7 @@ $a = $routes[$uri]["action"];
 
 if( file_exists("Controller/".$c.".class.php")){
     include "Controller/".$c.".class.php";
+    $c = "App\\Controller\\".$c;
     if(class_exists($c)){
 
         $cObject = new $c();

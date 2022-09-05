@@ -1,11 +1,19 @@
 <?php
+namespace App\Controller;
+use App\Utils\Security as Secu;
+
+require "Utils/Security.class.php";
 
 class Security
 {
 
     public function login(): void
     {
-        echo "login";
+        if( Secu::isLogged() ){
+            echo "Vous êtes déjà connecté";
+        }else{
+            echo "login";
+        }
     }
 
     public function logout(): void
