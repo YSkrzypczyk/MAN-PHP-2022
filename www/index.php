@@ -1,11 +1,7 @@
 <?php
     namespace App;
 
-    var_dump($_ENV);
-
-
-    die();
-
+    use App\Utils\DotEnv;
 
     spl_autoload_register(function($class)
     {
@@ -19,6 +15,9 @@
             include $class;
         }
     });
+
+    new DotEnv();
+
 
 
     //Récupérer l'url, exemple /login?id=2
