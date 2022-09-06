@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 use App\Utils\Security as Secu;
+use App\Utils\View;
 
 
 class Security
@@ -8,11 +9,8 @@ class Security
 
     public function login(): void
     {
-        if( Secu::isLogged() ){
-            echo "Vous êtes déjà connecté";
-        }else{
-            echo "login";
-        }
+
+        $view = new View("back", "security/login");
     }
 
     public function logout(): void

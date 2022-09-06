@@ -25,7 +25,10 @@ class View
      */
     public function setTemplate(string $template): void
     {
-        $this->template = strtolower(trim($template));
+        $template = strtolower(trim($template));
+        $this->template = "View/".$template.".tpl.php";
+        if(!file_exists($this->template))
+            die("Le template ".$this->template." n'existe pas.");
     }
 
     /**
@@ -41,7 +44,15 @@ class View
      */
     public function setView(string $view): void
     {
-        $this->view = strtolower(trim($view));
+        $view = strtolower(trim($view));
+        $this->view = "View/".$view.".view.php";
+        if(!file_exists($this->view))
+            die("La vue ".$this->view." n'existe pas.");
     }
 
+    public function __destruct()
+    {
+        //Afficher le template ???
+        include $this->getTemplate();
+    }
 }

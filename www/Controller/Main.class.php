@@ -7,8 +7,6 @@ class Main
 {
     public function home(): void
     {
-
-
         $view = new View("front", "main/home");
     }
 

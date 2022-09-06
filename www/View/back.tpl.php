@@ -7,9 +7,10 @@
 </head>
 <body>
 
-<h1>Template Back</h1>
+    <h1>Template Back</h1>
 
-<!-- inclure la vue -->
+    <!-- inclure la vue -->
+    <?php include $this->getView(); ?>
 
 </body>
 

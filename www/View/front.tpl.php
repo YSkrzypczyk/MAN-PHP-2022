@@ -10,6 +10,7 @@
         <h1>Template Front</h1>
 
         <!-- inclure la vue -->
+        <?php include $this->getView(); ?>
 
     </body>
 
