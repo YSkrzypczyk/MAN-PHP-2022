@@ -16,8 +16,11 @@
         }
     });
 
-    new DotEnv();
-
+    if(file_exists("Cache/Constants.php")){
+        include "Cache/Constants.php";
+    }else {
+        new DotEnv();
+    }
 
 
     //Récupérer l'url, exemple /login?id=2

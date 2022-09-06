@@ -1,0 +1,1 @@
+<?php define('URL','http://localhost/');define('ENV','dev');

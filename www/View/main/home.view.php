@@ -1,1 +1,1 @@
-<h2>Hello !</h2>
+<h2>Hello <?= $firstname;?> <?= $lastname;?> !</h2>

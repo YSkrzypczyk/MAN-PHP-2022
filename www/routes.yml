@@ -21,3 +21,7 @@
 /pwd-forget:
   controller: Security
   action: forget
+
+/tools/cleancache:
+  controller: Tool
+  action: cleanCache

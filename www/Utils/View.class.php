@@ -5,6 +5,7 @@ class View
 {
     private String $template;
     private String $view;
+    private array $data = [];
 
     public function __construct(?String $template = null, ?String $view = null)
     {
@@ -50,9 +51,19 @@ class View
             die("La vue ".$this->view." n'existe pas.");
     }
 
+    public function assign(string $key,mixed $value): void
+    {
+        $this->data[$key]=$value;
+    }
+
+    public function assignMultiple(array $values): void
+    {
+        $this->data = array_merge($this->data, $values);
+    }
+
     public function __destruct()
     {
-        //Afficher le template ???
+        extract($this->data);
         include $this->getTemplate();
     }
 }
