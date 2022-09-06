@@ -10,7 +10,7 @@ class Security
     public function login(): void
     {
 
-        $view = new View("back", "security/login");
+        $view = new View("login", "security/login");
     }
 
     public function logout(): void
@@ -20,7 +20,7 @@ class Security
 
     public function register(): void
     {
-        echo "register";
+        $view = new View("login", "security/register");
     }
 
     public function forget(): void

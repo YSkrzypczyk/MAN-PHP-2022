@@ -1,6 +1,11 @@
 <?php
     namespace App;
 
+    var_dump($_ENV);
+
+
+    die();
+
 
     spl_autoload_register(function($class)
     {
