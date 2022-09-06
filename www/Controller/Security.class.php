@@ -2,7 +2,6 @@
 namespace App\Controller;
 use App\Utils\Security as Secu;
 
-require "Utils/Security.class.php";
 
 class Security
 {

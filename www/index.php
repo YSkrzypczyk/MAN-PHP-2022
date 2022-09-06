@@ -1,7 +1,22 @@
 <?php
     namespace App;
 
-    //Récupérer l'url, exemple /login
+
+    spl_autoload_register(function($class)
+    {
+        // App\Utils\Security
+        // Utils/Security.class.php
+        $array = explode("\\", $class);
+        unset($array[0]);
+        $class = implode("/", $array);
+        $class .= ".class.php";
+        if(file_exists($class)){
+            include $class;
+        }
+    });
+
+
+    //Récupérer l'url, exemple /login?id=2
     $uri = strtolower(trim($_SERVER["REQUEST_URI"]));
     $uri = explode("?", $uri)[0];
     //Ouverture de notre fichier de routing

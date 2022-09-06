@@ -6,7 +6,7 @@ class Security
 
     public static function isLogged(): bool
     {
-        return false;
+        return true;
     }
 
 
