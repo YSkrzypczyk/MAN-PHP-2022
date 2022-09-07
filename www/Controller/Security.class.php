@@ -24,8 +24,9 @@ class Security
 
         $user = new User();
 
-        $user->setFirstname("Yves")
-             ->setLastname("SKRZYPCZYK")
+        $user->setId(4)
+             ->setFirstname("Tutu")
+             ->setLastname("")
              ->setPwd("Test1234")
              ->setEmail("y.skrzypczyk@gmail.com")
              ->save();

@@ -14,13 +14,8 @@ abstract class ORM
     //Mettre en place un singleton (Design pattern)
     public function __construct()
     {
-        try {
-            $this->PDO = new \PDO("pgsql:host=" . DBHOST . ";dbname=" . DBNAME, DBUSER, DBPWD);
-            $this->PDO->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            $this->PDO->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-        }catch(\Exception $e){
-            die("Erreur SQL : ".$e->getMessage());
-        }
+
+        $this->PDO = SingletonSql::getInstance();
 
         $calledClass = explode("\\",get_called_class());
         $this->table = DBPREFIXE.strtolower(end($calledClass));
@@ -35,7 +30,7 @@ abstract class ORM
 
         if( is_null($this->getId())){
             unset($columns["id"]);
-            $columns["date_inserted"]=time();
+            $columns["date_inserted"]=date('Y-m-d H:i:s');
 
             $queryPrepared = $this->PDO->prepare("INSERT INTO ".$this->table." 
             (".implode(",",array_keys($columns)).")
@@ -45,6 +40,15 @@ abstract class ORM
             $queryPrepared->execute($columns);
 
         }else{
+            $columns["date_updated"]=date('Y-m-d H:i:s');
+
+            foreach ($columns as $column=>$value)
+                $sql[] =$column."=:".$column;
+
+            $queryPrepared = $this->PDO->prepare("UPDATE ".$this->table." 
+             SET ".implode(",", $sql)."
+             WHERE id=:id");
+            $queryPrepared->execute($columns);
 
 
         }
