@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Model\User;
 use App\Utils\Security as Secu;
 use App\Utils\View;
 
@@ -20,6 +21,13 @@ class Security
 
     public function register(): void
     {
+
+        $user = new User();
+        $user->setFirstname("Yves")
+             ->setLastname("SKRZYPCZYK")
+             ->setPwd("Test1234")
+             ->setEmail("y.skrzypczyk@gmail.com");
+
         $view = new View("login", "security/register");
     }
 

@@ -10,9 +10,11 @@
         $array = explode("\\", $class);
         unset($array[0]);
         $class = implode("/", $array);
-        $class .= ".class.php";
-        if(file_exists($class)){
-            include $class;
+        if(file_exists($class.".class.php")){
+            include $class.".class.php";
+        }
+        else if(file_exists($class.".interface.php")){
+            include $class.".interface.php";
         }
     });
 
