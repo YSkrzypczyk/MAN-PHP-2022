@@ -21,7 +21,6 @@ class SingletonSql
     {
         if(is_null(self::$_instance))
         self::$_instance = new SingletonSql();
-
         return self::$_instance->PDO;
     }
 

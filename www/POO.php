@@ -1,25 +1,18 @@
 <?php
 
-//Controller/Security.class.php
-namespace App\Controller;
-class Security
-{
+
+class clean{
+
+    public static function cleanFirstname()
+    {}
+    public static function cleanLastname()
+    {}
+    public static function cleanEmail()
+    {}
+    public static function cleanAddress()
+    {}
 
 }
----------------------------------------------
 
-//Utils/Security.class.php
-namespace App\Utils;
-class Security
-{
+clean::cleanFirstname();
 
-}
-
----------------------------------------------
-
-use App\Utils\Security;
-use App\Controller\Security as Secu;
-
-new Security();
-new Secu();
----------------------------------------------

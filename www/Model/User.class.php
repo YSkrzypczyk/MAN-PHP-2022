@@ -123,5 +123,64 @@ class User extends ORM
     }
 
 
+    public function getRegisterForm(): array
+    {
+        return [
+            "config"=>[
+                "method"=>"POST",
+                "action"=>"",
+                "id"=>"register-form",
+                "class"=>"form",
+                "submit"=>"S'inscrire"
+            ],
+            "inputs"=>[
+                "firstname"=>[
+                    "type"=>"text",
+                    "placeholder"=>"Votre prénom",
+                    "required"=>true,
+                    "id"=>"firstname-input",
+                    "class"=>'form-control',
+                    "min"=>2,
+                    "max"=>30,
+                    "error"=>"Le prénom doit faire entre 2 et 30 caractères"
+                ],
+                "lastname"=>[
+                    "type"=>"text",
+                    "placeholder"=>"Votre nom",
+                    "required"=>true,
+                    "id"=>"lastname-input",
+                    "class"=>'form-control',
+                    "min"=>2,
+                    "max"=>60,
+                    "error"=>"Le nom doit faire entre 2 et 60 caractères"
+                ],
+                "email"=>[
+                    "type"=>"email",
+                    "placeholder"=>"Votre email",
+                    "required"=>true,
+                    "id"=>"email-input",
+                    "class"=>'form-control',
+                    "error"=>"Format de votre email incorrect"
+                ],
+                "pwd"=>[
+                    "type"=>"password",
+                    "placeholder"=>"Votre mot de passe",
+                    "required"=>true,
+                    "id"=>"password-input",
+                    "class"=>'form-control',
+                    "error"=>"Votre mot de passe doit faire au minimum 8 caractères avec une minuscule, une majuscule et un chiffre"
+                ],
+                "pwdConfirm"=>[
+                    "type"=>"password",
+                    "placeholder"=>"Confirmation",
+                    "required"=>true,
+                    "id"=>"passwordConfirm-input",
+                    "class"=>'form-control',
+                    "error"=>"Confirmation incorrect",
+                    "confirm"=>"pwd"
+                ],
+            ]
+        ];
+    }
 
 }

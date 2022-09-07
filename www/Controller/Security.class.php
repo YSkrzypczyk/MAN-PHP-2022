@@ -32,6 +32,7 @@ class Security
              ->save();
 
         $view = new View("login", "security/register");
+        $view->assign("formRegister", $user->getRegisterForm());
     }
 
     public function forget(): void
