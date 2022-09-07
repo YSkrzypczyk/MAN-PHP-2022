@@ -8,7 +8,8 @@ abstract class ORM
     abstract public function getDateInserted(): ?String;
     abstract public function getDateUpdated(): ?String;
 
-    private \PDO $pdo;
+    private \PDO $PDO;
+    private String $table;
 
     //Mettre en place un singleton (Design pattern)
     public function __construct()
@@ -20,24 +21,34 @@ abstract class ORM
         }catch(\Exception $e){
             die("Erreur SQL : ".$e->getMessage());
         }
+
+        $calledClass = explode("\\",get_called_class());
+        $this->table = DBPREFIXE.strtolower(end($calledClass));
     }
 
     final public function save():void
     {
-        //Est-ce un insert ou un update
-        if(){
-            //Récupérer le nom de la table, exemple esgi_user
-            //Récupérer toutes les colonnes de la table
-            //Générer une requête préparée
+        $columns = array_diff_key(
+            get_object_vars($this),
+            get_class_vars(get_class())
+        );
 
-            $queryPrepared = $this->PDO->prepare('......');
-            $queryPrepared->execute([
-                                "firstname"=>"Yves"
-                            ]);
+        if( is_null($this->getId())){
+            unset($columns["id"]);
+            $columns["date_inserted"]=time();
+
+            $queryPrepared = $this->PDO->prepare("INSERT INTO ".$this->table." 
+            (".implode(",",array_keys($columns)).")
+            VALUES
+            (:".implode(",:",array_keys($columns)).")");
+
+            $queryPrepared->execute($columns);
 
         }else{
 
+
         }
+
 
     }
 

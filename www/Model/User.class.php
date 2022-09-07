@@ -8,13 +8,13 @@ use App\Utils\ORM;
 class User extends ORM
 {
 
-    private ?Int $id;
-    private ?String $firstname;
-    private ?String $lastname;
-    private ?String $email;
-    private ?String $pwd;
-    private ?String $date_updated;
-    private ?String $date_inserted;
+    protected ?Int $id = null;
+    protected ?String $firstname;
+    protected ?String $lastname;
+    protected ?String $email;
+    protected ?String $pwd;
+    protected ?String $date_updated;
+    protected ?String $date_inserted;
 
     /**
      * @return Int|null
