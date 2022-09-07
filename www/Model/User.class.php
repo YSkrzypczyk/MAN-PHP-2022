@@ -1,9 +1,11 @@
 <?php
 namespace App\Model;
 
-use App\Interface\Model;
+//use App\Interface\Model;
+use App\Utils\ORM;
 
-class User implements Model
+//implements Model
+class User extends ORM
 {
 
     private ?Int $id;

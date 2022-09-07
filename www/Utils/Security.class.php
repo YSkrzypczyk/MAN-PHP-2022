@@ -9,5 +9,4 @@ class Security
         return true;
     }
 
-
 }

@@ -23,10 +23,12 @@ class Security
     {
 
         $user = new User();
+
         $user->setFirstname("Yves")
              ->setLastname("SKRZYPCZYK")
              ->setPwd("Test1234")
-             ->setEmail("y.skrzypczyk@gmail.com");
+             ->setEmail("y.skrzypczyk@gmail.com")
+             ->save();
 
         $view = new View("login", "security/register");
     }
