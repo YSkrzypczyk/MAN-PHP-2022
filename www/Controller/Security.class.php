@@ -2,6 +2,7 @@
 namespace App\Controller;
 use App\Model\User;
 use App\Utils\Security as Secu;
+use App\Utils\Verificator;
 use App\Utils\View;
 
 
@@ -24,12 +25,16 @@ class Security
 
         $user = new User();
 
-        $user->setId(4)
+
+        if( !empty($_POST) && Verificator::checkForm($user->getRegisterForm(), $_POST)){
+             $user
              ->setFirstname("Tutu")
-             ->setLastname("")
+             ->setLastname("SKRZYPCZYK")
              ->setPwd("Test1234")
              ->setEmail("y.skrzypczyk@gmail.com")
              ->save();
+        }
+
 
         $view = new View("login", "security/register");
         $view->assign("formRegister", $user->getRegisterForm());
