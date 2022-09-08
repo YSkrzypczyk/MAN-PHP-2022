@@ -28,8 +28,11 @@
 
     $uri = strtolower(trim($_SERVER["REQUEST_URI"]));
     $uri = explode("?", $uri)[0];
-    $router = new Router();
+
+
+    $router = Router::getInstance();
     $routing = $router->getController($uri);
+
 
 
     $c = $routing["controller"];

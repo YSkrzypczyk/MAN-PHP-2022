@@ -3,7 +3,7 @@ namespace App\Utils;
 
 class SingletonSql
 {
-    private static ?SingletonSql $_instance = null;
+    private static SingletonSql $_instance;
     private \PDO $PDO;
 
     private function __construct()
@@ -19,7 +19,7 @@ class SingletonSql
 
     public static function getInstance()
     {
-        if(is_null(self::$_instance))
+        if(empty(self::$_instance))
         self::$_instance = new SingletonSql();
         return self::$_instance->PDO;
     }
