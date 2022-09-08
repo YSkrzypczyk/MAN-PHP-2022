@@ -183,4 +183,35 @@ class User extends ORM
         ];
     }
 
+    public function getLoginForm(): array
+    {
+        return [
+            "config"=>[
+                "method"=>"POST",
+                "action"=>"",
+                "id"=>"login-form",
+                "class"=>"form",
+                "submit"=>"Se connecter"
+            ],
+            "inputs"=>[
+                "email"=>[
+                    "type"=>"email",
+                    "placeholder"=>"Votre email",
+                    "required"=>true,
+                    "id"=>"email-input",
+                    "class"=>'form-control',
+                    "error"=>""
+                ],
+                "pwd"=>[
+                    "type"=>"password",
+                    "placeholder"=>"Votre mot de passe",
+                    "required"=>true,
+                    "id"=>"password-input",
+                    "class"=>'form-control',
+                    "error"=>""
+                ]
+            ]
+        ];
+    }
+
 }

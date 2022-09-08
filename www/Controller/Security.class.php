@@ -11,8 +11,11 @@ class Security
 
     public function login(): void
     {
+        $user = new User();
 
         $view = new View("login", "security/login");
+        $view->assign("formLogin", $user->getLoginForm());
+        //$view->assign("formErrors", $errors);
     }
 
     public function logout(): void
@@ -24,20 +27,25 @@ class Security
     {
 
         $user = new User();
+        $errors = [];
 
 
-        if( !empty($_POST) && Verificator::checkForm($user->getRegisterForm(), $_POST)){
-             $user
-             ->setFirstname("Tutu")
-             ->setLastname("SKRZYPCZYK")
-             ->setPwd("Test1234")
-             ->setEmail("y.skrzypczyk@gmail.com")
+        if( !empty($_POST) && Verificator::checkForm($user->getRegisterForm(), $_POST, $errors)){
+
+            $user
+             ->setFirstname($_POST["firstname"])
+             ->setLastname($_POST["lastname"])
+             ->setPwd($_POST["pwd"])
+             ->setEmail($_POST["email"])
              ->save();
+
+            //header("Location: ".getUrl("security","login"));
         }
 
 
         $view = new View("login", "security/register");
         $view->assign("formRegister", $user->getRegisterForm());
+        $view->assign("formErrors", $errors);
     }
 
     public function forget(): void

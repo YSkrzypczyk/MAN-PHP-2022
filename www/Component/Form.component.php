@@ -6,12 +6,20 @@
     <?php foreach ( $config["inputs"] as $name=>$attrs) : ?>
 
         <div class="form-group">
-            <input type="<?= $attrs["type"]??"text" ?>"
+
+            <input name="<?= $name ?>"
+                    type="<?= $attrs["type"]??"text" ?>"
                    class="<?= $attrs["class"]??"" ?>"
                    id="<?= $attrs["id"]??"" ?>"
                    placeholder="<?= $attrs["placeholder"]??"" ?>"
                    <?= (isset($attrs["required"]))?'required="required"':'' ?>
+                    value="<?= ($attrs["type"] != "password")?($_POST[$name]??""):"" ?>"
             >
+
+            <?php if (!empty($errors[$name] )):?>
+                <div class="text text-danger ">- <?= $errors[$name] ?></div>
+            <?php endif;?>
+
         </div>
 
     <?php endforeach;?>

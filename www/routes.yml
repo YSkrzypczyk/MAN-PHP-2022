@@ -2,9 +2,6 @@
   controller: Main
   action: home
 
-/se-connecter:
-  controller: Security
-  action: login
 
 /admin/login:
   controller: Security

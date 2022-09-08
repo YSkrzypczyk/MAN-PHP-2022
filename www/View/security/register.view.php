@@ -12,7 +12,7 @@
                         </div>
 
                         <!-- Intégration du composant form -->
-                        <?php $this->includeComponent("Form", $formRegister); ?>
+                        <?php $this->includeComponent("Form", $formRegister, $formErrors); ?>
 
                         <hr>
                         <div class="text-center">

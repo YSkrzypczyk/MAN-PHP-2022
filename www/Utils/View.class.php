@@ -61,13 +61,12 @@ class View
         $this->data = array_merge($this->data, $values);
     }
 
-    public function includeComponent(String $component, array $config): void
+    public function includeComponent(String $component, array $config, ?array $errors = null): void
     {
         if( !file_exists("Component/".$component.".component.php")){
             die("Component/".$component.".component.php n'existe pas");
         }
         include "Component/".$component.".component.php";
-
     }
 
     public function __destruct()
