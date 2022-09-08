@@ -1,6 +1,8 @@
 <?php
     namespace App;
 
+    session_start();
+
     use App\Utils\DotEnv;
     use App\Utils\Router;
 

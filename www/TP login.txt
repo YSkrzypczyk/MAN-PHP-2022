@@ -1,0 +1,9 @@
+A partir du form de login
+Vérifier que l'email est en bdd
+si oui récupérer le mot de passe hashé sinon afficher identifiants incorrects
+Ensuite vérifier que le mot de passe saisi correspond au mot de passe hashé
+Si ce n'est pas le cas afficher identifiants incorrects
+Si c'est bon créer un token,
+insérez le token en bdd pour le user + dans ses sessions
+Créez une méthode qui va vérifier que le token en sessions correspond au token en bdd
+Afficher sur la home un message indiquant si le user est co ou non
