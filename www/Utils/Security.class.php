@@ -16,11 +16,10 @@ class Security
         return substr(md5(uniqid().SALT),0, -1);
     }
 
-    public static function verifyCredentials(string $email, string $pwd): bool
+    public static function verifyCredentials(string $email, string $pwd, &$user): bool
     {
-        $user = new User();
-        $result = $user->getOneBy(["email"=>$email]);
-        return ($result && password_verify($pwd, $result["pwd"]));
+        $user = $user->getOneBy(["email"=>$email]);
+        return ($user && password_verify($pwd, $user->getPwd()));
     }
 
 }

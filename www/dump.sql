@@ -12,8 +12,9 @@ CREATE TABLE "public"."esgi_user" (
                                       "pwd" character varying(255) NOT NULL,
                                       "date_inserted" timestamp,
                                       "date_updated" timestamp,
+                                      "token" character(31),
                                       CONSTRAINT "esgi_user_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
 
--- 2022-09-07 10:30:34.574823+00
+-- 2022-09-09 10:09:46.661106+00

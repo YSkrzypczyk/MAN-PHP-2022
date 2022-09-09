@@ -56,19 +56,16 @@ abstract class ORM
 
     }
 
-    final public function getOneBy( array $params): array|bool
+    final public function getOneBy( array $params): bool|object
     {
         //$params = ["column"=>"value","column"=>"value", ...]
 
         foreach ($params as $column=>$value)
             $sql[] =$column."=:".$column;
 
-
         $queryPrepared = $this->PDO->prepare("SELECT * FROM ".$this->table." WHERE ".implode(" AND ", $sql));
         $queryPrepared->execute($params);
-        $result = $queryPrepared->fetch();
-
-        return $result;
+        return $queryPrepared->fetchObject(get_called_class());
 
     }
 

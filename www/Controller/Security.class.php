@@ -17,10 +17,13 @@ class Security
         $formErrors = [];
 
         if(!empty($_POST) ){
-            if(\App\Utils\Security::verifyCredentials($_POST["email"], $_POST["pwd"] )){
+            if(\App\Utils\Security::verifyCredentials($_POST["email"], $_POST["pwd"], $user )){
                 $token = \App\Utils\Security::createToken();
 
                 //Mise à jour de la bdd avec le token
+                $user->setToken($token);
+                $user->save();
+
                 //Création de la session token
 
                 die($token);
