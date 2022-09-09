@@ -13,6 +13,8 @@ class User extends ORM
     protected ?String $lastname;
     protected ?String $email;
     protected ?String $pwd;
+
+    protected ?String $token;
     protected ?String $date_updated;
     protected ?String $date_inserted;
 
@@ -104,6 +106,23 @@ class User extends ORM
     {
         $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
         return $this;
+    }
+
+
+    /**
+     * @return String|null
+     */
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param String|null $token
+     */
+    public function setToken(?string $token): void
+    {
+        $this->token = $token;
     }
 
     /**

@@ -14,10 +14,26 @@ class Security
     {
 
         $user = new User();
+        $formErrors = [];
+
+        if(!empty($_POST) ){
+            if(\App\Utils\Security::verifyCredentials($_POST["email"], $_POST["pwd"] )){
+                $token = \App\Utils\Security::createToken();
+
+                //Mise à jour de la bdd avec le token
+                //Création de la session token
+
+                die($token);
+            }else{
+                $formErrors = ["email"=>"Identifiants incorrects"];
+            }
+        }
 
         $view = new View("login", "security/login");
         $view->assign("formLogin", $user->getLoginForm());
-        //$view->assign("formErrors", $errors);
+        $view->assign("formErrors", $formErrors);
+
+
     }
 
     public function logout(): void

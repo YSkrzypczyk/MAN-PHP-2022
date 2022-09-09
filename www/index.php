@@ -5,6 +5,7 @@
 
     use App\Utils\DotEnv;
     use App\Utils\Router;
+    use App\Utils\Security;
 
     spl_autoload_register(function($class)
     {
@@ -21,11 +22,15 @@
         }
     });
 
+
     if(file_exists("Cache/Constants.php")){
         include "Cache/Constants.php";
     }else {
         new DotEnv();
     }
+
+
+    Security::createToken();
 
 
     $uri = strtolower(trim($_SERVER["REQUEST_URI"]));

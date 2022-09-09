@@ -1,5 +1,8 @@
+<?php
+    $method = $config["config"]["method"]??"GET";
+?>
 <form action="<?= $config["config"]["action"]??"" ?>"
-      method="<?= $config["config"]["method"]??"GET" ?>"
+      method="<?= $method ?>"
       id="<?= $config["config"]["id"]??"" ?>"
       class="<?= $config["config"]["class"]??"" ?>">
 
@@ -13,7 +16,7 @@
                    id="<?= $attrs["id"]??"" ?>"
                    placeholder="<?= $attrs["placeholder"]??"" ?>"
                    <?= (isset($attrs["required"]))?'required="required"':'' ?>
-                    value="<?= ($attrs["type"] != "password")?($_POST[$name]??""):"" ?>"
+                    value="<?= ($attrs["type"] != "password")?($_REQUEST[$name]??""):"" ?>"
             >
 
             <?php if (!empty($errors[$name] )):?>
