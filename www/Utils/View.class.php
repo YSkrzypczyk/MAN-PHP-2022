@@ -1,6 +1,7 @@
 <?php
 namespace App\Utils;
 
+
 class View
 {
     private String $template;

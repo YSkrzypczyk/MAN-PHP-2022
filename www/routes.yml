@@ -2,8 +2,11 @@
   controller: Main
   action: home
 
+/dashboard:
+  controller: Security
+  action: dashboard
 
-/admin/login:
+/login:
   controller: Security
   action: login
 

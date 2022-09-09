@@ -60,6 +60,18 @@ class Verificator
                 ){
                     $errors[$name] = $config["inputs"][$name]["error"];
                 }
+
+                //Vérification de l'unicity que s'il n'y a pas d'erreur sur le champs
+                if(
+                    empty($errors[$name]) && 
+                    !empty($config["inputs"][$name]["unicity"]) &&
+                    !self::checkUnicity($value,$config["inputs"][$name]["unicity"])
+                ){
+                    $errors[$name] = $config["inputs"][$name]["unicity"]["error"];
+
+                }
+
+
             }
 
         } else {
@@ -78,9 +90,16 @@ class Verificator
         return strlen($string)<=$length;
     }
 
-    public static function checkUnicity(): bool
+    public static function checkUnicity(string $data, array $info): bool
     {
-        return true;
+        $class = "App\\Model\\".$info["class"]; //user
+        $prop = $info["prop"];
+        $data = strtolower(trim($data));
+
+        $object = new $class();
+        $result = $object->getOneBy([$prop => $data]);
+
+        return empty($result);
     }
 
     public static function checkEmail(String $email): bool

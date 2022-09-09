@@ -160,7 +160,8 @@ class User extends ORM
                     "required"=>true,
                     "id"=>"email-input",
                     "class"=>'form-control',
-                    "error"=>"Format de votre email incorrect"
+                    "error"=>"Format de votre email incorrect",
+                    "unicity"=>["class"=>"user", "prop"=>"email","error"=>"L'email existe déjà"],
                 ],
                 "pwd"=>[
                     "type"=>"password",
