@@ -13,6 +13,8 @@ class Security
     public function login(): void
     {
 
+        \App\Utils\Security::redirectIfConnected();
+
         $user = new User();
         $formErrors = [];
 
@@ -23,10 +25,11 @@ class Security
                 //Mise à jour de la bdd avec le token
                 $user->setToken($token);
                 $user->save();
-
                 //Création de la session token
+                $_SESSION["token"] = $token;
+                $_SESSION["user"] = $user->getEmail();
 
-                die($token);
+                header("Location: ".Router::getUrl("Security","dashboard"));
             }else{
                 $formErrors = ["email"=>"Identifiants incorrects"];
             }
@@ -41,11 +44,16 @@ class Security
 
     public function logout(): void
     {
-        echo "logout";
+        unset($_SESSION["token"]);
+        unset($_SESSION["user"]);
+        header("Location: ".Router::getUrl("Security","login"));
+
     }
 
     public function register(): void
     {
+
+        \App\Utils\Security::redirectIfConnected();
 
         $user = new User();
         $errors = [];
@@ -74,6 +82,9 @@ class Security
 
     public function dashboard(): void
     {
+        //Vérification de l'authentification ?
+        \App\Utils\Security::redirectIfNotConnected();
+
         $view = new View("back", "security/dashboard");
     }
 

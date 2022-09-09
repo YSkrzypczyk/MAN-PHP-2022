@@ -40,7 +40,9 @@
     $router = Router::getInstance();
     $routing = $router->getController($uri);
 
-
+    if($routing["security"]){
+        Security::redirectIfNotConnected();
+    }
 
     $c = $routing["controller"];
     $a = $routing["action"];

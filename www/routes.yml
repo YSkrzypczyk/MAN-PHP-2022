@@ -1,27 +1,34 @@
 /:
   controller: Main
   action: home
+  security: false
 
 /dashboard:
   controller: Security
   action: dashboard
+  security: true
 
 /login:
   controller: Security
   action: login
+  security: false
 
 /logout:
   controller: Security
   action: logout
+  security: false
 
 /register:
   controller: Security
   action: register
+  security: false
 
 /pwd-forget:
   controller: Security
   action: forget
+  security: false
 
 /tools/cleancache:
   controller: Tool
   action: cleanCache
+  security: true

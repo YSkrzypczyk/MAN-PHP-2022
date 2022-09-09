@@ -150,7 +150,8 @@ class User extends ORM
                 "action"=>"",
                 "id"=>"register-form",
                 "class"=>"form",
-                "submit"=>"S'inscrire"
+                "submit"=>"S'inscrire",
+                "captcha"=>true
             ],
             "inputs"=>[
                 "firstname"=>[

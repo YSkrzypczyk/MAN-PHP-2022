@@ -27,6 +27,13 @@
 
     <?php endforeach;?>
 
+    <?php if(!empty($config["config"]["captcha"])):?>
+
+    <div class="form-group">
+        <img src="/Public/captcha.php"><br><br>
+        <input type="text" name="captcha" class="form-control" placeholder="Saisir le code ...">
+    </div>
+    <?php endif;?>
 
     <input type="submit" value="<?= $config["config"]["submit"] ?>" class="btn btn-primary">
 

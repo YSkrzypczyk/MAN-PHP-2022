@@ -53,7 +53,6 @@ abstract class ORM
 
         }
 
-
     }
 
     final public function getOneBy( array $params): bool|object

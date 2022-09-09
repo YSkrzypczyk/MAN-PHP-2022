@@ -51,10 +51,7 @@ class Router
         if( !isset($this->routes["uri"][$uri]["controller"]) ) die("Il n'y a pas de controller pour cette route");
         if( !isset($this->routes["uri"][$uri]["action"]) ) die("Il n'y a pas d'action pour cette route");
 
-        return [
-            "controller"=>$this->routes["uri"][$uri]["controller"],
-            "action" =>$this->routes["uri"][$uri]["action"]
-        ];
+        return $this->routes["uri"][$uri];
     }
 
     public static function getUrl(String $controller, String $action): String
